@@ -1,7 +1,12 @@
+using OU.BlogApp.DAL.Extention;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDALDependencies(builder.Configuration.GetConnectionString("SqlCon"));
 
 var app = builder.Build();
 
@@ -17,6 +22,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseRouting();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

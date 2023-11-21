@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OU.BlogApp.DAL.Context
 {
-    internal class AppDbContex : IdentityDbContext
+    internal class AppDbContex : IdentityDbContext<AppUser,AppRole,string>
     {
         public AppDbContex(DbContextOptions options) : base(options)
         {
@@ -19,6 +19,7 @@ namespace OU.BlogApp.DAL.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(modelBuilder);
         }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }

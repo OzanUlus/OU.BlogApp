@@ -17,5 +17,6 @@ namespace OU.BlogApp.DAL.Abstract
         ICollection<T> GetAll(Expression<Func<T,bool>>filter);
         T? GetById(int id);
         ICollection<T> GetAll();
+
     }
 }
