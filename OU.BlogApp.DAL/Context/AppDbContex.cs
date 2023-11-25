@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OU.BlogApp.DAL.Context
 {
-    internal class AppDbContex : IdentityDbContext<AppUser,AppRole,string>
+    internal class AppDbContex : IdentityDbContext<AppUser,AppRole,Guid>
     {
         public AppDbContex(DbContextOptions options) : base(options)
         {
