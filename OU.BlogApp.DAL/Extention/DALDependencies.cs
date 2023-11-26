@@ -44,7 +44,7 @@ namespace OU.BlogApp.DAL.Extention
             }).AddPasswordValidator<CustomPasswordValidator>()
             .AddUserValidator<CustomUserValidator>()
             .AddDefaultTokenProviders()
-            .AddEntityFrameworkStores<AppDbContext>();;
+            .AddEntityFrameworkStores<AppDbContext>();
 
 
 

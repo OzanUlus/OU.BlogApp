@@ -19,12 +19,14 @@ namespace OU.BlogApp.Entity.Entities
         #region Nagivation Properties
         public Category Category { get; set; }
         public Photo Photo { get; set; }
+        public AppUser AppUser { get; set; }
         #endregion
 
 
         #region FK
         public string CategoryId { get; set; }
         public string PhotoId { get; set; }
+        public string AppuserId { get; set; }
         #endregion
 
 

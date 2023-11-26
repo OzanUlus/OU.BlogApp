@@ -10,9 +10,14 @@ namespace OU.BlogApp.Entity.Entities
 {
     public class AppUser : IdentityUser, IEntity
     {
+        public AppUser()
+        {
+            Articles = new List<Article>();
+        }
         public string Name { get; set; } = null!;
         public string SurName { get; set; } = null!;
         public string? LastLogin { get; set; }
         public bool isBanned { get; set; } = false;
+        public ICollection<Article> Articles{ get; set; }
     }
 }

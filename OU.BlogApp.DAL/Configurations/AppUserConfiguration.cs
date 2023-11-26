@@ -16,6 +16,8 @@ namespace OU.BlogApp.DAL.Configurations
             builder.Property(x=>x.Name).HasMaxLength(25).IsRequired();
             builder.Property(x=>x.SurName).HasMaxLength(25).IsRequired();
             builder.Property(x=>x.LastLogin).IsRequired(false);
+
+            
         }
     }
 }

@@ -17,6 +17,7 @@ namespace OU.BlogApp.DAL.Configurations
                 .HasForeignKey(a => a.CategoryId);
             builder.HasOne(a => a.Photo).WithMany(a => a.Articles)
                 .HasForeignKey(a => a.PhotoId);
+            builder.HasOne(a => a.AppUser).WithMany(a => a.Articles).HasForeignKey(a => a.AppuserId);
 
             builder.Property(a=>a.Title).IsRequired().HasMaxLength(100);
             builder.Property(a=>a.Content).IsRequired();

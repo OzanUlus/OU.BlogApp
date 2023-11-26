@@ -157,15 +157,15 @@ namespace OU.BlogApp.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8266a8e8-1720-40d9-817b-169ec266b9c2",
-                            ConcurrencyStamp = "b8375e30-b9b0-49de-9ba5-cf0061f4a7f2",
+                            Id = "3e1a79fc-a35d-45cb-8ffb-96be4e2259a9",
+                            ConcurrencyStamp = "45d5a9a4-141c-4b86-ab3a-600fb74a2b82",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "b826a804-035a-400f-ad84-a0ce01a2e37a",
-                            ConcurrencyStamp = "461b233c-8ca1-4c65-9f4b-1bd6046f4787",
+                            Id = "0cbbc99f-8130-40df-9063-b44c55f242a0",
+                            ConcurrencyStamp = "2034033a-e500-489e-a586-12a55c939366",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -257,6 +257,10 @@ namespace OU.BlogApp.DAL.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("AppuserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("CategoryId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -302,6 +306,8 @@ namespace OU.BlogApp.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppuserId");
 
                     b.HasIndex("CategoryId");
 
@@ -444,6 +450,12 @@ namespace OU.BlogApp.DAL.Migrations
 
             modelBuilder.Entity("OU.BlogApp.Entity.Entities.Article", b =>
                 {
+                    b.HasOne("OU.BlogApp.Entity.Entities.AppUser", "AppUser")
+                        .WithMany("Articles")
+                        .HasForeignKey("AppuserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("OU.BlogApp.Entity.Entities.Category", "Category")
                         .WithMany("Articles")
                         .HasForeignKey("CategoryId")
@@ -456,9 +468,16 @@ namespace OU.BlogApp.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("AppUser");
+
                     b.Navigation("Category");
 
                     b.Navigation("Photo");
+                });
+
+            modelBuilder.Entity("OU.BlogApp.Entity.Entities.AppUser", b =>
+                {
+                    b.Navigation("Articles");
                 });
 
             modelBuilder.Entity("OU.BlogApp.Entity.Entities.Category", b =>
