@@ -207,6 +207,7 @@ namespace OU.BlogApp.DAL.Migrations
                     ViewCount = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     PhotoId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    AppuserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UpdateddBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DeletedtedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -218,6 +219,12 @@ namespace OU.BlogApp.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Articles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Articles_AspNetUsers_AppuserId",
+                        column: x => x.AppuserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Articles_Categories_CategoryId",
                         column: x => x.CategoryId,
@@ -235,12 +242,22 @@ namespace OU.BlogApp.DAL.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "8266a8e8-1720-40d9-817b-169ec266b9c2", "b8375e30-b9b0-49de-9ba5-cf0061f4a7f2", "admin", "ADMIN" });
+                values: new object[] { "4984e2dd-0986-44ac-a8a7-ac1c4779d387", "b80b2775-1c25-48fb-976e-83087c2b9b47", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "b826a804-035a-400f-ad84-a0ce01a2e37a", "461b233c-8ca1-4c65-9f4b-1bd6046f4787", "user", "USER" });
+                values: new object[] { "e4dc145c-167e-4f5d-ae0b-46172e91e05b", "2be2a7ed-220f-49a3-8b8b-15a380061b5c", "user", "USER" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LastLogin", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "SurName", "TwoFactorEnabled", "UserName", "isBanned" },
+                values: new object[] { "7d4abbbc-add8-4d46-aa72-697b06521e0e", 0, "de4a5fbb-5548-4ac1-8048-8ad26198de1f", "admin@admin.com", true, null, false, null, "admin", null, null, null, null, false, "d432f3b8-81bb-4d7b-aa03-0eaefe2814e3", "Admin", false, "Sistemadmin", false });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Articles_AppuserId",
+                table: "Articles",
+                column: "AppuserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Articles_CategoryId",

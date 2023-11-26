@@ -157,15 +157,15 @@ namespace OU.BlogApp.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3e1a79fc-a35d-45cb-8ffb-96be4e2259a9",
-                            ConcurrencyStamp = "45d5a9a4-141c-4b86-ab3a-600fb74a2b82",
+                            Id = "4984e2dd-0986-44ac-a8a7-ac1c4779d387",
+                            ConcurrencyStamp = "b80b2775-1c25-48fb-976e-83087c2b9b47",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0cbbc99f-8130-40df-9063-b44c55f242a0",
-                            ConcurrencyStamp = "2034033a-e500-489e-a586-12a55c939366",
+                            Id = "e4dc145c-167e-4f5d-ae0b-46172e91e05b",
+                            ConcurrencyStamp = "2be2a7ed-220f-49a3-8b8b-15a380061b5c",
                             Name = "user",
                             NormalizedName = "USER"
                         });
@@ -250,6 +250,24 @@ namespace OU.BlogApp.DAL.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "7d4abbbc-add8-4d46-aa72-697b06521e0e",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "de4a5fbb-5548-4ac1-8048-8ad26198de1f",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            Name = "admin",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "d432f3b8-81bb-4d7b-aa03-0eaefe2814e3",
+                            SurName = "Admin",
+                            TwoFactorEnabled = false,
+                            UserName = "Sistemadmin",
+                            isBanned = false
+                        });
                 });
 
             modelBuilder.Entity("OU.BlogApp.Entity.Entities.Article", b =>
