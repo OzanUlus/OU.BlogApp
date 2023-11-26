@@ -10,7 +10,7 @@ namespace OU.BlogApp.Entity.Entities
 {
     public class Category : BaseEntity
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Article> Articles { get; set; }

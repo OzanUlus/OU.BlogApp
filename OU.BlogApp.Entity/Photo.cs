@@ -11,7 +11,7 @@ namespace OU.BlogApp.Entity
     public class Photo:BaseEntity
     {
         
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string PhotoPath { get; set; }
         public string PhotoType { get; set; }
 

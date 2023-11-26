@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OU.BlogApp.Entity.Entities
 {
-    public class AppRole : IdentityRole<Guid>,IEntity
+    public class AppRole : IdentityRole,IEntity
     {
     }
 }

@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace OU.BlogApp.DAL.Context
 {
-    internal class AppDbContex : IdentityDbContext<AppUser,AppRole,Guid>
+    public class AppDbContext : IdentityDbContext<AppUser,AppRole,string>
     {
-        public AppDbContex(DbContextOptions options) : base(options)
+        public AppDbContext(DbContextOptions options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

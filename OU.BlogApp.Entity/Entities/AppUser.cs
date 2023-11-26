@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OU.BlogApp.Entity.Entities
 {
-    public class AppUser : IdentityUser<Guid>, IEntity
+    public class AppUser : IdentityUser, IEntity
     {
         public string Name { get; set; } = null!;
         public string SurName { get; set; } = null!;
