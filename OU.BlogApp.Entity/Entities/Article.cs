@@ -23,8 +23,8 @@ namespace OU.BlogApp.Entity.Entities
 
 
         #region FK
-        public Guid CategoryId { get; set; }
-        public Guid PhotoId { get; set; }
+        public string CategoryId { get; set; }
+        public string PhotoId { get; set; }
         #endregion
 
 

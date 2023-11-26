@@ -24,12 +24,32 @@ namespace OU.BlogApp.DAL.Extention
 
             });
 
-            services.AddIdentity<AppUser, AppRole>();
+            services.AddIdentity<AppUser, AppRole>(option =>
+            {
+                option.User.RequireUniqueEmail = true;
+                option.SignIn.RequireConfirmedEmail = false; //ileride true
+                option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(1);
+                option.Lockout.MaxFailedAccessAttempts = 3;
 
-            
+
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireDigit = true;
+                option.Password.RequiredLength = 6;
+
+
+
+
+            }).AddPasswordValidator<CustomPasswordValidator>()
+            .AddUserValidator<CustomUserValidator>()
+            .AddDefaultTokenProviders()
+            .AddEntityFrameworkStores<AppDbContext>();;
+
+
 
             //services.AddIdentityCore<AppUser>(option =>
-            //{ 
+            //{
             //    option.User.RequireUniqueEmail = true;
             //    option.SignIn.RequireConfirmedEmail = false; //ileride true
             //    option.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(1);
@@ -51,7 +71,7 @@ namespace OU.BlogApp.DAL.Extention
 
 
 
-            
+
 
 
 
