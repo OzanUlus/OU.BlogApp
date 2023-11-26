@@ -17,4 +17,8 @@
     <ProjectReference Include="..\OU.BlogApp.BLL\OU.BlogApp.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
+  </ItemGroup>
+
 </Project>

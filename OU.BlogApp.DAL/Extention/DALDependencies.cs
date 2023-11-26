@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using OU.BlogApp.DAL.Context;
 using OU.BlogApp.DAL.IdendityConfigurations;
@@ -31,14 +32,15 @@ namespace OU.BlogApp.DAL.Extention
 
 
                 option.Password.RequireNonAlphanumeric = false;
-                option.Password.RequireLowercase = true;
-                option.Password.RequireUppercase = true;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireUppercase = false;
                 option.Password.RequireDigit = true;
                 option.Password.RequiredLength = 6;
 
             }
 
-            ).AddPasswordValidator<CustomPasswordValidator>()
+            ).AddRoleManager<RoleManager<AppRole>>() 
+            .AddPasswordValidator<CustomPasswordValidator>()
             .AddUserValidator<CustomUserValidator>()
             .AddEntityFrameworkStores<AppDbContex>();
             
